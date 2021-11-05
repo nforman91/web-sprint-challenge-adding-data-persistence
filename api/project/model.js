@@ -2,7 +2,11 @@ const db = require('../../data/dbConfig')
 
 async function find(){
     const rows = await db('projects')
-    return rows
+
+    return rows.map(row => ({
+        ...row,
+        project_completed: !!row.project_completed
+    }))
 }
 
 function create(project){
