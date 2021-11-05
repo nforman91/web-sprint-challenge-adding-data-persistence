@@ -12,4 +12,14 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
+router.post('/', (req, res, next) => {
+    const resource = req.body
+
+    Resources.create(resource)
+        .then(resource => {
+            res.json(resource)
+        })
+        .catch(next)
+})
+
 module.exports = router
